@@ -2,7 +2,7 @@
 
 Canvas can be manipulated with Javascript to give some creative and interesting output for various projects
 
-## This app is simple bubble simulation using Canvas
+## This app is a simple bubble simulation using Canvas
 
 To run the app 
 
