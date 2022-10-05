@@ -16,7 +16,7 @@ context.moveTo(100,100);
 context.lineTo(500,500);
 context.lineTo(800,100);
 context.stroke();*/
-const colors = ['red','green','blue', 'orange', 'pink'];
+const colors = ['red','green','blue','orange','pink'];
 
 class Ball{
     constructor(x,y,radius,dx,dy, color)
@@ -37,13 +37,13 @@ class Ball{
     }
 
     update(){
-        if((this.y + this.radius -10 > canvas.height) || (this.y - this.radius + 10 < 0))
+        if((this.y + this.radius > canvas.height) || (this.y - this.radius < 0))
         {
             this.dy = (-this.dy);
             this.color = colors[Math.floor(Math.random()*colors.length)];
         }
 
-        if((this.x + this.radius - 10 > canvas.width) || (this.x - this.radius +10 < 0))
+        if((this.x + this.radius > canvas.width) || (this.x - this.radius < 0))
         {
             this.dx = (-this.dx);
             this.color = colors[Math.floor(Math.random()*colors.length)];
@@ -54,16 +54,33 @@ class Ball{
     }
 }
 var ballList = [];
-for(var i = 0; i < 2000; i++)
+/*for(var i = 0; i < 2000; i++)
 {
+    var x = Math.random()*canvas.width;
+    var y = Math.random()*canvas.height;
+    var dx = (Math.random()-0.5)*0.5;
+    var dy = (Math.random()-0.5)*0.5;
+    var radius = Math.random()*1;
+    var bright = 1;
+    var color = colors[Math.floor(Math.random()*colors.length)];
+    ballList.push(new Ball(x,y,radius,dx,dy,color,bright));
+}*/
+
+function releaseBall(x,y){
+    var x = x;
+    var y = y;
+    var dx = (Math.random()-0.5)*8;
+    var dy = (Math.random()-0.5)*8;
+    var radius = 20;
+    var color = colors[Math.floor(Math.random()*colors.length)];
+    ballList.push(new Ball(x,y,radius,dx,dy,color));
+}
     var x = Math.random()*canvas.width;
     var y = Math.random()*canvas.height;
     var dx = (Math.random()-0.5)*8;
     var dy = (Math.random()-0.5)*8;
-    var radius = Math.random()*2;
+    var radius = 20;
     var color = colors[Math.floor(Math.random()*colors.length)];
-    ballList.push(new Ball(x,y,radius,dx,dy,color));
-}
 function animateCircle()
 {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -71,7 +88,7 @@ function animateCircle()
     {
         ballList[i].update();
     }
-    /*context.beginPath();
+    context.beginPath();
     context.fillStyle = color;
     context.arc(x,y,radius,0,Math.PI * 2,false);
     context.fill();
@@ -79,15 +96,17 @@ function animateCircle()
     {
         dy = (-dy);
         color = colors[Math.floor(Math.random()*colors.length)];
+        releaseBall(x,y);
     }
 
     if((x + radius > canvas.width) || (x - radius < 0))
     {
         dx = (-dx);
         color = colors[Math.floor(Math.random()*colors.length)];
+        releaseBall(x,y);
     }
     y+=dy;
-    x+=dx;*/
+    x+=dx;
     requestAnimationFrame(animateCircle);
 }
 
