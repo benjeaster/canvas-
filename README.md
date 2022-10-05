@@ -6,7 +6,8 @@ Canvas can be manipulated with Javascript to give some creative and interesting 
 
 To run the app 
 
-clone the code to your local device with the following execution command
+clone the code to your local device with the following
+execution command
 ``` git clone <url> ```
 OR download the code to your local device 
 
@@ -19,7 +20,7 @@ Next step is Open the `index.html` file on your browser
 
 Both have different simulations.
 The Program runs with index.js as default.
-To try out the other file, change the `src = 'index.js'` from the html file to `src = 'index1.js'
+To try out the other file, change the `src = 'index.js'` from the html file to `src = 'index1.js'`
 
 Enjoy the view
 
